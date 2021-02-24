@@ -25,6 +25,7 @@
 
 <script>
   import axios from 'axios'
+  import { getErrorInfo } from '../api/infoApi.js'
 export default {
   data () {
     return {
@@ -39,8 +40,7 @@ export default {
     }
   },
   mounted () {
-    axios
-            .get('https://api.coindesk.com/v1/bpi/currentprice.jsonp','',{timeout:3000})
+    axios.get('https://api.coindesk.com/v1/bpi/currentprice.jsonp','',{timeout:3000})
             .then(response => {
               this.info = response.data.bpi
             })
@@ -49,6 +49,14 @@ export default {
               this.errored = true
             })
             .finally(() => this.loading = false)
+    // this.executeQueryPage()
+  },
+  methods: {
+    executeQueryPage() {
+      getErrorInfo().then(res => {
+        console.log(res)
+      })
+    }
   }
 }
 </script>

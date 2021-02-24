@@ -22,21 +22,22 @@ const routes = [
   {
     path: "/info",
     name: "NewInfo",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/NewInfo.vue")
   },
   {
     path: "/error",
     name: "ErrorPage",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ErrorPage.vue")
+  },
+  {
+    path: "/vuexDemo",
+    name: "ParentVuex",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ParentVuex.vue")
   }
+
 ];
 
 const router = new VueRouter({
