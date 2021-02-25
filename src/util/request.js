@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 // 本工程中axios使用，均通过其API构建请求，可参考https://www.kancloud.cn/yunye/axios/234845
 const service = axios.create({
   timeout: 5000 // request timeout,
@@ -8,7 +7,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   async request => {
-    request.headers['Access-Control-Allow-Origin'] = '*'
+    // request.headers['Access-Control-Allow-Origin'] = '*'
     // if (tmpToken) {
     //   request.headers['Authorization'] = 'Bearer ' + tmpToken.access_token
     // }
@@ -23,14 +22,17 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
   async response => {
-    const res = response.data
-    if (res.code !== 1 && res.code !== 200) {
-console.info('error')
-    } else {
-      return res.data
-    }
+    // const res = response.data
+    // if (res.code !== 1 && res.code !== 200) {
+    //     console.info('error')
+    // } else {
+    //
+    // }
+    return response.data
   },
   async error => {
+    console.info('error--happen')
+   alert('We are sorry, we are not able to retrieve this information at the moment, please try back later')
     if (error && error.response) {
       switch (error.response.status) {
         case 401:// 登陆失效

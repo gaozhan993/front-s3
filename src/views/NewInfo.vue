@@ -2,7 +2,7 @@
   <div  class="about">
     <h1>Bitcoin Price Index</h1>
   <div
-          v-for="currency in info" v-bind:key="currency"
+          v-for="currency in info" v-bind:key="currency.symbol"
           class="currency"
   >
     {{ currency.description }}:

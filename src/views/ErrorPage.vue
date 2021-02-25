@@ -10,7 +10,7 @@
 
       <div
               v-else
-              v-for="currency in info" v-bind:key="currency"
+              v-for="currency in info" v-bind:key="currency.symbol"
               class="currency"
       >
         {{ currency.description }}:
@@ -54,7 +54,9 @@ export default {
   methods: {
     executeQueryPage() {
       getErrorInfo().then(res => {
-        console.log(res)
+        console.info(res)
+        this.info = res.bpi
+        this.loading = false
       })
     }
   }
